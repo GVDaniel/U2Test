@@ -33,7 +33,7 @@ class OrdersController extends Controller
 
         $date = Carbon::createFromFormat('Y-m-d', $request->date);
 
-        $orders = Orders::whereDate('deadline', $date)->get();
+        $orders = Orders::whereDate('deadline', $date)->get()->load('products.product.supplier');
 
         return response()->json( [
             'orders'    => $orders,

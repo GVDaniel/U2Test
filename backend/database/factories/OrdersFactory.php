@@ -18,7 +18,8 @@ class OrdersFactory extends Factory
         $statuses = [
             'to deliver',
             'delivered',
-            'expired'
+            'expired',
+            'canceled'
         ];
 
         $priorities = [
@@ -54,7 +55,6 @@ class OrdersFactory extends Factory
             'customer_email'    => $this->faker->email(),
             'customer_identification' => $this->faker->randomNumber(8),
             'total'             => $price,
-            'sub_total'         => $price,
             'priority'          => $priority,
             'status'            => $statuses[array_rand($statuses, 1)],
             'deadline'          => $deadline,

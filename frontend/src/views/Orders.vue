@@ -1,8 +1,8 @@
 <template>
   <div class="content" style="padding: 100px;">
     <h1>God Shop</h1>
-    <div class="col-md-12">
-      <table id="table" class="table table-responsive-xl">
+    <div class="col-md-12 table-responsive">
+      <table id="table" class="table">
         <thead>
             <tr>
               <th>Id</th>
@@ -39,7 +39,10 @@
       <div class="label">
         Check date
       </div>
-      <input v-model="date" class="form-control" type="date" @change="checkDate"/>
+      <div class="input-group">
+        <input v-model="date" class="form-control" type="date" @change="checkDate"/>
+        <button type="button" class="btn btn-primary" @click="getOrders">Limpiar</button>
+      </div>
     </div>
     <div class="modal fade" id="modalOrder" tabindex="-1" aria-labelledby="modalOrderLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
@@ -109,7 +112,7 @@ import "datatables.net-buttons/js/buttons.print.js"
 import $ from 'jquery'; 
 
 export default {
-  name: 'Notes',
+  name: 'Orders',
   data: () => {
     return {
       orders: [],

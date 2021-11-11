@@ -8,7 +8,6 @@
             <label>Correo</label>
             <input v-model="email" type="email" class="form-control form-control-lg" />
         </div>
-
         <div class="form-group">
             <label>Clave</label>
             <input v-model="password" type="password" class="form-control form-control-lg" />
@@ -17,6 +16,9 @@
           <button type="submit" class="btn btn-dark btn-lg btn-block">Iniciar</button>
         </div>
     </form>
+  </div>
+  <div class="col-md-12" style="padding: 20px;">
+    <div v-if="alert" class="alert alert-warning">{{message}}</div>
   </div>
 </div>
 </template>
@@ -31,6 +33,7 @@ export default {
       password: '',
       showMessage: false,
       message: '',
+      alert: false
     }
   },
   methods: {
@@ -43,13 +46,12 @@ export default {
         self.email = '';
         self.password = '';
         localStorage.setItem("api_token", response.data.token);
-        self.$router.push({ path: 'about' });
-      })
-      .catch(function (error) {
-        self.message = 'Incorrect E-mail or password';
-        self.showMessage = true;
-        console.log(error);
-      });
+        self.$router.push({ path: 'orders' });
+      }).catch(function () {
+          self.message = 'Invalid Credentials'
+          self.alert = true
+          // self.$router.push({ path: '/login' });
+        });
 
     }
   }
