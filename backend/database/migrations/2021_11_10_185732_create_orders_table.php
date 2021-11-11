@@ -20,8 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_phone')->nullable();
             $table->string('customer_email')->nullable();
             $table->string('customer_identification')->nullable();
-            $table->float('total')->nullable();
-            $table->float('sub_total', 12, 2)->nullable();
+            $table->float('total', 12, 2)->nullable();
             $table->string('status');
             $table->string('priority');
             $table->date('deadline');
